@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <VersionPrefix>2.0.2</VersionPrefix>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>DataTables.AspNet.Samples.AspNetCore.BasicIntegration</AssemblyName>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <PackageId>DataTables.AspNet.Samples.AspNetCore.BasicIntegration</PackageId>
 
   </PropertyGroup>
