@@ -25,6 +25,8 @@ THE SOFTWARE.
 
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using System.Text.Json;
 
 namespace DataTables.AspNet.AspNetCore
@@ -70,8 +72,8 @@ namespace DataTables.AspNet.AspNetCore
     /// <returns></returns>
     public override string ToString()
     {
-      using (var stringWriter = new System.IO.StringWriter())
-      using (var jsonWriter = new Utf8JsonWriter((System.Buffers.IBufferWriter<byte>)stringWriter))
+      using (var ms = new MemoryStream())
+      using (var jsonWriter = new Utf8JsonWriter(ms))
       {
         if (IsSuccessResponse())
         {
@@ -134,7 +136,7 @@ namespace DataTables.AspNet.AspNetCore
 
         jsonWriter.Flush();
 
-        return stringWriter.ToString();
+        return Encoding.UTF8.GetString(ms.ToArray());
       }
     }
     /// <summary>

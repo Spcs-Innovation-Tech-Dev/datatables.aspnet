@@ -82,9 +82,17 @@ namespace DataTables.AspNet.AspNetCore
 
             if (Data != null)
             {
+                try
+                {
+
                 var content = Data.ToString();
                 var contentBytes = ContentEncoding.GetBytes(content);
                 await response.Body.WriteAsync(contentBytes, 0, contentBytes.Length);
+                                } catch (Exception)
+                {
+                                    Console.WriteLine("Type was: "  + Data.GetType().ToString());   
+                                    throw;
+                                }
             }
         }
     }
